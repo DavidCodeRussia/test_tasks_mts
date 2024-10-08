@@ -1,13 +1,13 @@
-// @ts-nocheck
 import React from "react";
-import PropTypes from "prop-types";
 import _ from "lodash";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { data } from "../__mocks__";
+import { ShowcaseLayoutProps, ShowcaseLayoutState } from '../types';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
-export default class ShowcaseLayout extends React.Component {
-  constructor(props) {
+export default class ShowcaseLayout extends React.Component<ShowcaseLayoutProps, ShowcaseLayoutState> {
+  static defaultProps: Partial<ShowcaseLayoutProps>;
+  constructor(props: ShowcaseLayoutProps) {
     super(props);
     this.state = {
       currentBreakpoint: "lg",
@@ -16,9 +16,7 @@ export default class ShowcaseLayout extends React.Component {
       layouts: { lg: props.initialLayout }
     };
 
-    this.onBreakpointChange = this.onBreakpointChange.bind(this);
     this.onCompactTypeChange = this.onCompactTypeChange.bind(this);
-    this.onLayoutChange = this.onLayoutChange.bind(this);
     this.onNewLayout = this.onNewLayout.bind(this);
   }
 
@@ -27,7 +25,7 @@ export default class ShowcaseLayout extends React.Component {
   }
 
   generateDOM() {
-    return _.map(this.state.layouts.lg, function(l, i) {
+    return _.map(this.state.layouts!.lg, function(l, i) {
       return (
         <div key={i} className={l.static ? "static" : ""}>
           {l.static ? (
@@ -45,12 +43,6 @@ export default class ShowcaseLayout extends React.Component {
     });
   }
 
-  onBreakpointChange(breakpoint) {
-    this.setState({
-      currentBreakpoint: breakpoint
-    });
-  }
-
   onCompactTypeChange() {
     const { compactType: oldCompactType } = this.state;
     const compactType =
@@ -62,10 +54,6 @@ export default class ShowcaseLayout extends React.Component {
     this.setState({ compactType });
   }
 
-  onLayoutChange(layout, layouts) {
-    this.props.onLayoutChange(layout, layouts);
-  }
-
   onNewLayout() {
     this.setState({
       layouts: { lg: generateLayout() }
@@ -75,15 +63,15 @@ export default class ShowcaseLayout extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ 'margin-bottom': '10px' }}>
+        <div style={{ 'marginBottom': '10px' }}>
           Last udpate time:{" "}
           {data.time}
         </div>
         <ResponsiveReactGridLayout
           {...this.props}
           layouts={this.state.layouts}
-          onBreakpointChange={this.onBreakpointChange}
-          onLayoutChange={this.onLayoutChange}
+          onBreakpointChange={() => {}}
+          onLayoutChange={() => {}}
           measureBeforeMount={false}
           useCSSTransforms={this.state.mounted}
           compactType={this.state.compactType}
@@ -95,10 +83,6 @@ export default class ShowcaseLayout extends React.Component {
     );
   }
 }
-
-ShowcaseLayout.propTypes = {
-  onLayoutChange: PropTypes.func.isRequired
-};
 
 ShowcaseLayout.defaultProps = {
   className: "layout",

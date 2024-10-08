@@ -1,0 +1,31 @@
+const arrMetrics = [
+  { metricName: 1, x: 2, y: 0, w: 2, h: 5, static: true },
+  { metricName: 2, x: 8, y: 0, w: 2, h: 2, minW: 2, maxW: 4, static: false },
+  { metricName: 3, x: 6, y: 0, w: 2, h: 3, static: false },
+  { metricName: 4, x: 2, y: 5, w: 2, h: 5, static: false },
+  { metricName: 5, x: 2, y: 14, w: 2, h: 3, static: false },
+  { metricName: 6, x: 8, y: 5, w: 2, h: 4, static: false },
+  { metricName: 7, x: 2, y: 17, w: 2, h: 2, static: false },
+  { metricName: 8, x: 8, y: 23, w: 2, h: 5, static: false },
+  { metricName: 9, x: 6, y: 3, w: 2, h: 4, static: false },
+  { metricName: 10, x: 2, y: 19, w: 2, h: 3, static: false },
+  { metricName: 11, x: 4, y: 0, w: 2, h: 3, static: false },
+  { metricName: 12, x: 6, y: 7, w: 2, h: 3, static: false },
+  { metricName: 13, x: 8, y: 28, w: 2, h: 3, static: false },
+  { metricName: 14, x: 4, y: 3, w: 2, h: 5, static: false },
+  { metricName: 15, x: 8, y: 33, w: 2, h: 4, static: false },
+  { metricName: 16, x: 2, y: 22, w: 2, h: 2, static: false },
+  { metricName: 17, x: 0, y: 0, w: 2, h: 5, static: false },
+  { metricName: 18, x: 8, y: 12, w: 2, h: 4, static: false },
+  { metricName: 19, x: 8, y: 37, w: 2, h: 4, static: false },
+  { metricName: 20, x: 8, y: 41, w: 2, h: 5, static: false },
+  { metricName: 21, x: 8, y: 20, w: 2, h: 3, static: false },
+  { metricName: 22, x: 8, y: 31, w: 2, h: 2, static: false },
+  { metricName: 23, x: 8, y: 31, w: 2, h: 2, static: false },
+  { metricName: 24, x: 2, y: 24, w: 2, h: 4, static: false },
+];
+
+export const data = {
+  time: "Sun Jun 14 2020",
+  metrics: arrMetrics,
+}
